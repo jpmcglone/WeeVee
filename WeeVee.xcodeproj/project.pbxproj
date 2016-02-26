@@ -1,0 +1,291 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		40C2E7EC1C8115D500FBCDBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7EB1C8115D500FBCDBE /* AppDelegate.swift */; };
+		40C2E7EE1C8115D500FBCDBE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7ED1C8115D500FBCDBE /* ViewController.swift */; };
+		40C2E7F11C8115D500FBCDBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C2E7EF1C8115D500FBCDBE /* Main.storyboard */; };
+		40C2E7F31C8115D500FBCDBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40C2E7F21C8115D500FBCDBE /* Assets.xcassets */; };
+		40C2E7F61C8115D500FBCDBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C2E7F41C8115D500FBCDBE /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		40C2E7E81C8115D500FBCDBE /* WeeVee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeeVee.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		40C2E7EB1C8115D500FBCDBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		40C2E7ED1C8115D500FBCDBE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		40C2E7F01C8115D500FBCDBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		40C2E7F21C8115D500FBCDBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		40C2E7F51C8115D500FBCDBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		40C2E7F71C8115D500FBCDBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		40C2E7E51C8115D500FBCDBE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		40C2E7DF1C8115D500FBCDBE = {
+			isa = PBXGroup;
+			children = (
+				40C2E7EA1C8115D500FBCDBE /* WeeVee */,
+				40C2E7E91C8115D500FBCDBE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		40C2E7E91C8115D500FBCDBE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				40C2E7E81C8115D500FBCDBE /* WeeVee.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		40C2E7EA1C8115D500FBCDBE /* WeeVee */ = {
+			isa = PBXGroup;
+			children = (
+				40C2E7EB1C8115D500FBCDBE /* AppDelegate.swift */,
+				40C2E7ED1C8115D500FBCDBE /* ViewController.swift */,
+				40C2E7EF1C8115D500FBCDBE /* Main.storyboard */,
+				40C2E7F21C8115D500FBCDBE /* Assets.xcassets */,
+				40C2E7F41C8115D500FBCDBE /* LaunchScreen.storyboard */,
+				40C2E7F71C8115D500FBCDBE /* Info.plist */,
+			);
+			path = WeeVee;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		40C2E7E71C8115D500FBCDBE /* WeeVee */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40C2E7FA1C8115D500FBCDBE /* Build configuration list for PBXNativeTarget "WeeVee" */;
+			buildPhases = (
+				40C2E7E41C8115D500FBCDBE /* Sources */,
+				40C2E7E51C8115D500FBCDBE /* Frameworks */,
+				40C2E7E61C8115D500FBCDBE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WeeVee;
+			productName = WeeVee;
+			productReference = 40C2E7E81C8115D500FBCDBE /* WeeVee.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		40C2E7E01C8115D500FBCDBE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "JP McGlone";
+				TargetAttributes = {
+					40C2E7E71C8115D500FBCDBE = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 40C2E7E31C8115D500FBCDBE /* Build configuration list for PBXProject "WeeVee" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 40C2E7DF1C8115D500FBCDBE;
+			productRefGroup = 40C2E7E91C8115D500FBCDBE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				40C2E7E71C8115D500FBCDBE /* WeeVee */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		40C2E7E61C8115D500FBCDBE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40C2E7F61C8115D500FBCDBE /* LaunchScreen.storyboard in Resources */,
+				40C2E7F31C8115D500FBCDBE /* Assets.xcassets in Resources */,
+				40C2E7F11C8115D500FBCDBE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		40C2E7E41C8115D500FBCDBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40C2E7EE1C8115D500FBCDBE /* ViewController.swift in Sources */,
+				40C2E7EC1C8115D500FBCDBE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		40C2E7EF1C8115D500FBCDBE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40C2E7F01C8115D500FBCDBE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		40C2E7F41C8115D500FBCDBE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40C2E7F51C8115D500FBCDBE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		40C2E7F81C8115D500FBCDBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		40C2E7F91C8115D500FBCDBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		40C2E7FB1C8115D500FBCDBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WeeVee/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.trifl.WeeVee;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		40C2E7FC1C8115D500FBCDBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WeeVee/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.trifl.WeeVee;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		40C2E7E31C8115D500FBCDBE /* Build configuration list for PBXProject "WeeVee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40C2E7F81C8115D500FBCDBE /* Debug */,
+				40C2E7F91C8115D500FBCDBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40C2E7FA1C8115D500FBCDBE /* Build configuration list for PBXNativeTarget "WeeVee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40C2E7FB1C8115D500FBCDBE /* Debug */,
+				40C2E7FC1C8115D500FBCDBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 40C2E7E01C8115D500FBCDBE /* Project object */;
+}
