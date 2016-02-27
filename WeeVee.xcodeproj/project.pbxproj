@@ -9,19 +9,25 @@
 /* Begin PBXBuildFile section */
 		40C2E7EC1C8115D500FBCDBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7EB1C8115D500FBCDBE /* AppDelegate.swift */; };
 		40C2E7EE1C8115D500FBCDBE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7ED1C8115D500FBCDBE /* ViewController.swift */; };
-		40C2E7F11C8115D500FBCDBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C2E7EF1C8115D500FBCDBE /* Main.storyboard */; };
 		40C2E7F31C8115D500FBCDBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40C2E7F21C8115D500FBCDBE /* Assets.xcassets */; };
 		40C2E7F61C8115D500FBCDBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C2E7F41C8115D500FBCDBE /* LaunchScreen.storyboard */; };
+		40C2E7FE1C8115FD00FBCDBE /* AgentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7FD1C8115FD00FBCDBE /* AgentViewController.swift */; };
+		40C2E8001C81179400FBCDBE /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7FF1C81179400FBCDBE /* MessageTableViewCell.swift */; };
+		542EFAC783ED2F7269ED910B /* Pods_WeeVee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0AB9943A19D6178B90905E /* Pods_WeeVee.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A0AB9943A19D6178B90905E /* Pods_WeeVee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeeVee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C2E7E81C8115D500FBCDBE /* WeeVee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeeVee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C2E7EB1C8115D500FBCDBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40C2E7ED1C8115D500FBCDBE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		40C2E7F01C8115D500FBCDBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		40C2E7F21C8115D500FBCDBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40C2E7F51C8115D500FBCDBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40C2E7F71C8115D500FBCDBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40C2E7FD1C8115FD00FBCDBE /* AgentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentViewController.swift; sourceTree = "<group>"; };
+		40C2E7FF1C81179400FBCDBE /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		42CA77F19856E01E1D684271 /* Pods-WeeVee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeeVee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeeVee/Pods-WeeVee.debug.xcconfig"; sourceTree = "<group>"; };
+		703C213F7F51D83F61025019 /* Pods-WeeVee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeeVee.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeeVee/Pods-WeeVee.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542EFAC783ED2F7269ED910B /* Pods_WeeVee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EB850C1A6203109419BB9A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A0AB9943A19D6178B90905E /* Pods_WeeVee.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		40C2E7DF1C8115D500FBCDBE = {
 			isa = PBXGroup;
 			children = (
 				40C2E7EA1C8115D500FBCDBE /* WeeVee */,
 				40C2E7E91C8115D500FBCDBE /* Products */,
+				659436A3C28801E29C136BB8 /* Pods */,
+				1EB850C1A6203109419BB9A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +73,22 @@
 			children = (
 				40C2E7EB1C8115D500FBCDBE /* AppDelegate.swift */,
 				40C2E7ED1C8115D500FBCDBE /* ViewController.swift */,
-				40C2E7EF1C8115D500FBCDBE /* Main.storyboard */,
 				40C2E7F21C8115D500FBCDBE /* Assets.xcassets */,
 				40C2E7F41C8115D500FBCDBE /* LaunchScreen.storyboard */,
 				40C2E7F71C8115D500FBCDBE /* Info.plist */,
+				40C2E7FD1C8115FD00FBCDBE /* AgentViewController.swift */,
+				40C2E7FF1C81179400FBCDBE /* MessageTableViewCell.swift */,
 			);
 			path = WeeVee;
+			sourceTree = "<group>";
+		};
+		659436A3C28801E29C136BB8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				42CA77F19856E01E1D684271 /* Pods-WeeVee.debug.xcconfig */,
+				703C213F7F51D83F61025019 /* Pods-WeeVee.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40C2E7FA1C8115D500FBCDBE /* Build configuration list for PBXNativeTarget "WeeVee" */;
 			buildPhases = (
+				414243AB72F929B17F3A9D26 /* Check Pods Manifest.lock */,
 				40C2E7E41C8115D500FBCDBE /* Sources */,
 				40C2E7E51C8115D500FBCDBE /* Frameworks */,
 				40C2E7E61C8115D500FBCDBE /* Resources */,
+				22C98F7323CBB4C16E80C5B0 /* Embed Pods Frameworks */,
+				049DD3CD78DF8CB156313283 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,11 +154,58 @@
 			files = (
 				40C2E7F61C8115D500FBCDBE /* LaunchScreen.storyboard in Resources */,
 				40C2E7F31C8115D500FBCDBE /* Assets.xcassets in Resources */,
-				40C2E7F11C8115D500FBCDBE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		049DD3CD78DF8CB156313283 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeeVee/Pods-WeeVee-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		22C98F7323CBB4C16E80C5B0 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeeVee/Pods-WeeVee-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		414243AB72F929B17F3A9D26 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		40C2E7E41C8115D500FBCDBE /* Sources */ = {
@@ -136,6 +213,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				40C2E7EE1C8115D500FBCDBE /* ViewController.swift in Sources */,
+				40C2E8001C81179400FBCDBE /* MessageTableViewCell.swift in Sources */,
+				40C2E7FE1C8115FD00FBCDBE /* AgentViewController.swift in Sources */,
 				40C2E7EC1C8115D500FBCDBE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,14 +222,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		40C2E7EF1C8115D500FBCDBE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				40C2E7F01C8115D500FBCDBE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		40C2E7F41C8115D500FBCDBE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -245,6 +316,7 @@
 		};
 		40C2E7FB1C8115D500FBCDBE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42CA77F19856E01E1D684271 /* Pods-WeeVee.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WeeVee/Info.plist;
@@ -256,6 +328,7 @@
 		};
 		40C2E7FC1C8115D500FBCDBE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 703C213F7F51D83F61025019 /* Pods-WeeVee.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WeeVee/Info.plist;
@@ -284,6 +357,7 @@
 				40C2E7FC1C8115D500FBCDBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
