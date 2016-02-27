@@ -2,9 +2,14 @@ import UIKit
 import Alamofire
 import ObjectMapper
 import TK
+import SnapKit
 
-class AgentViewController: UITableViewController {
+class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, OptionsViewDelegate {
+    let tableView = UITableView()
+    
     let manager = Alamofire.Manager()
+    let baseURLString = "http://weevee.herokuapp.com/api"
+    
     var messages = [Message]()
     var typing = false {
         didSet {
@@ -16,9 +21,17 @@ class AgentViewController: UITableViewController {
     var imageView: UIImageView!
     var blurView: UIVisualEffectView!
     
+    var optionsView = OptionsView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(tableView)
+        
+        optionsView.delegate = self
+        
+        view.addSubview(tableView)
+
+        tableView.delegate = self
+        tableView.dataSource = self
         
         backgroundView = UIView(frame: view.bounds)
         backgroundView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
@@ -48,14 +61,33 @@ class AgentViewController: UITableViewController {
 
         // load sample json
         let basketJSON = loadJSON("sample")?["data"]
-        typing = true
+        fetch(basketJSON)
         
+        
+        view.addSubview(optionsView)
+        
+        tableView.snp_makeConstraints { make in
+            make.top.leading.trailing.equalTo(view)
+            make.bottom.equalTo(optionsView)
+        }
+        
+        optionsView.snp_makeConstraints { make in
+            make.bottom.equalTo(view)
+            make.width.equalTo(view)
+            make.height.equalTo(80)
+        }
+    }
+    
+    func fetch(basketJSON: AnyObject?) {
+        typing = true
         NSTimer.tk_scheduledTimer(1) {
             if let basket = Mapper<Basket>().map(basketJSON) {
                 self.loadBasket(basket) { basket, error in
                     if let basketMessages = basket.messages {
                         self.typing = true
-                        self.loadMessages(basketMessages)
+                        self.loadMessages(basketMessages) {
+                            self.setOptions(basket.options!)
+                        }
                     } else {
                         self.typing = false
                     }
@@ -75,11 +107,7 @@ class AgentViewController: UITableViewController {
         
     }
     
-    func loadMessages(var messages: [Message]) {
-        if messages.count == 0 {
-            return
-        }
-        
+    func loadMessages(var messages: [Message], completion: ()->()) {
         let message = messages.removeFirst()
         self.messages.append(message)
         tableView.reloadData()
@@ -87,15 +115,16 @@ class AgentViewController: UITableViewController {
         if messages.count == 0 {
             typing = false
             tableView.reloadData()
+            completion()
         } else {
             NSTimer.tk_scheduledTimer(1) {
-                self.loadMessages(messages)
+                self.loadMessages(messages, completion: completion)
             }
         }
     }
     
     // MARK: -
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if typing && indexPath.row == messages.count {
             let cell = tableView.dequeueReusableCellWithIdentifier("typing", forIndexPath: indexPath) as! TypingTableViewCell
             return cell
@@ -107,15 +136,15 @@ class AgentViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count + (typing ? 1 : 0)
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
-    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
@@ -131,5 +160,32 @@ class AgentViewController: UITableViewController {
             }
         }
         return nil
+    }
+    
+    func updateOptionsViewConstraints() {
+        optionsView.snp_remakeConstraints { make in
+            if self.optionsView.options == nil {
+                make.top.equalTo(view.snp_bottom)
+            } else {
+                make.bottom.equalTo(view)
+            }
+            make.width.equalTo(view)
+            make.height.equalTo(80)
+        }
+        view.setNeedsUpdateConstraints()
+    }
+    
+    func setOptions(options: [Option]?) {
+        optionsView.options = options
+        updateOptionsViewConstraints()
+    }
+    
+    // Mark: - 
+    func optionsView(optionsView: OptionsView, didSelectOption option: Option) {
+        print(option.text)
+        setOptions(nil)
+        // TODO: url :D
+        let basketJSON = loadJSON("sample2")?["data"]
+        fetch(basketJSON)
     }
 }

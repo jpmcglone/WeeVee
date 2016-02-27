@@ -15,10 +15,16 @@
                      }],
         "options": [{
                     "type": "Profile",
-                    "value": "Vince Vaughn"
+                    "text": "Vince Vaughn"
                     }, {
                     "type": "Profile",
-                    "value": "Jessica Jones"
+                    "text": "Jessica Jones"
+                    }, {
+                    "type": "Profile",
+                    "text": "Barack Obama"
+                    }, {
+                    "type": "Profile",
+                    "text": "Chloe Alpert"
                     }]
     }
 }
