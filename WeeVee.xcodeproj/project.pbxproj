@@ -7,17 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40330AED1C813BDB00DA80DF /* sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 40330AEC1C813BDB00DA80DF /* sample.json */; };
 		40C2E7EC1C8115D500FBCDBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7EB1C8115D500FBCDBE /* AppDelegate.swift */; };
 		40C2E7EE1C8115D500FBCDBE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7ED1C8115D500FBCDBE /* ViewController.swift */; };
 		40C2E7F31C8115D500FBCDBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40C2E7F21C8115D500FBCDBE /* Assets.xcassets */; };
 		40C2E7F61C8115D500FBCDBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C2E7F41C8115D500FBCDBE /* LaunchScreen.storyboard */; };
 		40C2E7FE1C8115FD00FBCDBE /* AgentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7FD1C8115FD00FBCDBE /* AgentViewController.swift */; };
 		40C2E8001C81179400FBCDBE /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7FF1C81179400FBCDBE /* MessageTableViewCell.swift */; };
+		40C2E8021C812B1300FBCDBE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E8011C812B1300FBCDBE /* Message.swift */; };
+		40C2E8041C812F7200FBCDBE /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E8031C812F7200FBCDBE /* Basket.swift */; };
+		40C2E8061C812F9400FBCDBE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E8051C812F9400FBCDBE /* Option.swift */; };
 		542EFAC783ED2F7269ED910B /* Pods_WeeVee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0AB9943A19D6178B90905E /* Pods_WeeVee.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3A0AB9943A19D6178B90905E /* Pods_WeeVee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeeVee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40330AEC1C813BDB00DA80DF /* sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample.json; sourceTree = "<group>"; };
 		40C2E7E81C8115D500FBCDBE /* WeeVee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeeVee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C2E7EB1C8115D500FBCDBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40C2E7ED1C8115D500FBCDBE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +31,9 @@
 		40C2E7F71C8115D500FBCDBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40C2E7FD1C8115FD00FBCDBE /* AgentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentViewController.swift; sourceTree = "<group>"; };
 		40C2E7FF1C81179400FBCDBE /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		40C2E8011C812B1300FBCDBE /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		40C2E8031C812F7200FBCDBE /* Basket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
+		40C2E8051C812F9400FBCDBE /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		42CA77F19856E01E1D684271 /* Pods-WeeVee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeeVee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeeVee/Pods-WeeVee.debug.xcconfig"; sourceTree = "<group>"; };
 		703C213F7F51D83F61025019 /* Pods-WeeVee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeeVee.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeeVee/Pods-WeeVee.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,6 +58,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		40330AEB1C81330600DA80DF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				40C2E8011C812B1300FBCDBE /* Message.swift */,
+				40C2E8031C812F7200FBCDBE /* Basket.swift */,
+				40C2E8051C812F9400FBCDBE /* Option.swift */,
+				40330AEC1C813BDB00DA80DF /* sample.json */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		40C2E7DF1C8115D500FBCDBE = {
 			isa = PBXGroup;
 			children = (
@@ -71,13 +90,14 @@
 		40C2E7EA1C8115D500FBCDBE /* WeeVee */ = {
 			isa = PBXGroup;
 			children = (
-				40C2E7EB1C8115D500FBCDBE /* AppDelegate.swift */,
-				40C2E7ED1C8115D500FBCDBE /* ViewController.swift */,
-				40C2E7F21C8115D500FBCDBE /* Assets.xcassets */,
-				40C2E7F41C8115D500FBCDBE /* LaunchScreen.storyboard */,
-				40C2E7F71C8115D500FBCDBE /* Info.plist */,
+				40330AEB1C81330600DA80DF /* Models */,
 				40C2E7FD1C8115FD00FBCDBE /* AgentViewController.swift */,
+				40C2E7EB1C8115D500FBCDBE /* AppDelegate.swift */,
+				40C2E7F21C8115D500FBCDBE /* Assets.xcassets */,
+				40C2E7F71C8115D500FBCDBE /* Info.plist */,
+				40C2E7F41C8115D500FBCDBE /* LaunchScreen.storyboard */,
 				40C2E7FF1C81179400FBCDBE /* MessageTableViewCell.swift */,
+				40C2E7ED1C8115D500FBCDBE /* ViewController.swift */,
 			);
 			path = WeeVee;
 			sourceTree = "<group>";
@@ -154,6 +174,7 @@
 			files = (
 				40C2E7F61C8115D500FBCDBE /* LaunchScreen.storyboard in Resources */,
 				40C2E7F31C8115D500FBCDBE /* Assets.xcassets in Resources */,
+				40330AED1C813BDB00DA80DF /* sample.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +235,9 @@
 			files = (
 				40C2E7EE1C8115D500FBCDBE /* ViewController.swift in Sources */,
 				40C2E8001C81179400FBCDBE /* MessageTableViewCell.swift in Sources */,
+				40C2E8061C812F9400FBCDBE /* Option.swift in Sources */,
+				40C2E8021C812B1300FBCDBE /* Message.swift in Sources */,
+				40C2E8041C812F7200FBCDBE /* Basket.swift in Sources */,
 				40C2E7FE1C8115FD00FBCDBE /* AgentViewController.swift in Sources */,
 				40C2E7EC1C8115D500FBCDBE /* AppDelegate.swift in Sources */,
 			);
