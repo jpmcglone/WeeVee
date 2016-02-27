@@ -76,12 +76,8 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
     }
     
     func addMessage(message: Message, atIndex index: Int) {
-        messages.append(message)
-        UIView.setAnimationsEnabled(false)
-        tableView.beginUpdates()
-        tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .None)
-        tableView.endUpdates()
-        UIView.setAnimationsEnabled(true)
+        messages.insert(message, atIndex: index)
+        tableView.reloadData()
     }
     
     func fetch(basketJSON: AnyObject?) {
@@ -91,9 +87,7 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
             if let basket = Mapper<Basket>().map(basketJSON) {
                 if let basketMessages = basket.messages {
                     self.loadMessages(basketMessages) {
-                        NSTimer.tk_scheduledTimer(0.5) {
-                            self.setOptions(basket.options!)
-                        }
+                    self.setOptions(basket.options!)
                     }
                 }
             }
@@ -104,34 +98,19 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
         let message = messages.removeFirst()
         
         let index = self.messages.count-1
-    
-        self.messages.insert(message, atIndex: index)
+        self.addMessage(message, atIndex: index)
 
-        let insertIndexPaths = [NSIndexPath(forRow: index, inSection: 0)]
-        var deleteIndexPaths: [NSIndexPath] = []
-     
         if messages.count == 0 {
             let index = self.messages.count-1
             self.messages.removeAtIndex(index)
-            deleteIndexPaths = [NSIndexPath(forRow: index, inSection: 0)]
-            
-            UIView.setAnimationsEnabled(false)
-            tableView.beginUpdates()
-            tableView.reloadRowsAtIndexPaths(insertIndexPaths, withRowAnimation: .None)
-            tableView.endUpdates()
-            UIView.setAnimationsEnabled(true)
             completion()
         } else {
-            UIView.setAnimationsEnabled(false)
-            tableView.beginUpdates()
-            tableView.insertRowsAtIndexPaths(insertIndexPaths, withRowAnimation: .None)
-            tableView.endUpdates()
-            UIView.setAnimationsEnabled(true)
-
             NSTimer.tk_scheduledTimer(1) {
                 self.loadMessages(messages, completion: completion)
             }
         }
+        
+        tableView.reloadData()
     }
     
     // MARK: -
@@ -143,7 +122,6 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("message", forIndexPath: indexPath) as! MessageTableViewCell
             cell.profileImageView.sd_cancelCurrentImageLoad()
-            
             
             if let type = message.type where type != .Other{
                 switch type {

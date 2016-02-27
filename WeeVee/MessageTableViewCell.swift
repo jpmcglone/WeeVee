@@ -56,6 +56,8 @@ class MessageTableViewCell: BubbleTableViewCell {
                     let ratio = maxHeight / image.size.height
                     let width = image.size.width * ratio
                     make.width.equalTo(width)
+                } else {
+                    make.width.equalTo(maxHeight)
                 }
                 make.bottom.equalTo(bubble).offset(-innerMargin)
                 print("if")
