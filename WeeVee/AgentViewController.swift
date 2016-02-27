@@ -37,6 +37,7 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         backgroundView = UIView(frame: view.bounds)
         backgroundView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         tableView.backgroundView = backgroundView
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0)
         
         imageView = UIImageView(frame: backgroundView.bounds)
         imageView.image = UIImage(named: "background")
@@ -52,7 +53,6 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.title = "WeeVee"
         
-        configureAlamofire()
         view.backgroundColor = .darkGrayColor()
         
         tableView.separatorStyle = .None
@@ -64,17 +64,13 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         fetch(uri: "baskets")
         
         view.addSubview(optionsView)
-        
+
         tableView.snp_makeConstraints { make in
             make.top.leading.trailing.equalTo(view)
-            make.bottom.equalTo(optionsView)
+            make.bottom.equalTo(optionsView.snp_top)
         }
         
-        optionsView.snp_makeConstraints { make in
-            make.bottom.equalTo(view)
-            make.width.equalTo(view)
-            make.height.equalTo(80)
-        }
+        updateOptionsViewConstraints()
     }
     
     func fetch(uri uri: String) {
@@ -95,15 +91,15 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         typing = true
         NSTimer.tk_scheduledTimer(1) {
             if let basket = Mapper<Basket>().map(basketJSON) {
-                self.loadBasket(basket) { basket, error in
-                    if let basketMessages = basket.messages {
-                        self.typing = true
-                        self.loadMessages(basketMessages) {
+                if let basketMessages = basket.messages {
+                    self.typing = true
+                    self.loadMessages(basketMessages) {
+                        NSTimer.tk_scheduledTimer(0.5) {
                             self.setOptions(basket.options!)
                         }
-                    } else {
-                        self.typing = false
                     }
+                } else {
+                    self.typing = false
                 }
             } else {
                 self.typing = false
@@ -111,19 +107,11 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func loadBasket(basket: Basket, completion:(basket: Basket, error: NSError?) -> ()) {
-        // TODO: alamofire
-        completion(basket: basket, error: nil)
-    }
-    
-    func configureAlamofire() {
-        
-    }
-    
     func loadMessages(var messages: [Message], completion: ()->()) {
         let message = messages.removeFirst()
         self.messages.append(message)
         tableView.reloadData()
+        tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         
         if messages.count == 0 {
             typing = false
@@ -155,7 +143,6 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.hasImage = false
             }
             cell.messageLabel.text = message.text
-            cell.updateImageViewConstraints()
             cell.setNeedsUpdateConstraints()
             return cell
         }
@@ -190,12 +177,12 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func updateOptionsViewConstraints() {
         optionsView.snp_remakeConstraints { make in
             if self.optionsView.options == nil {
-                make.top.equalTo(view.snp_bottom)
+                make.height.equalTo(0)
             } else {
-                make.bottom.equalTo(view)
+                make.height.equalTo(80)
             }
+            make.bottom.equalTo(view)
             make.width.equalTo(view)
-            make.height.equalTo(80)
         }
         view.setNeedsUpdateConstraints()
     }
@@ -203,6 +190,9 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func setOptions(options: [Option]?) {
         optionsView.options = options
         updateOptionsViewConstraints()
+        NSTimer.tk_scheduledTimer(0.01) {
+            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+        }
     }
     
     // Mark: - 
@@ -213,6 +203,7 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         message.text = option.text
         message.isMe = true
         messages.append(message)
+        tableView.reloadData()
         
         setOptions(nil)
         fetch(uri: option.uri!)

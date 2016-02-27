@@ -26,6 +26,7 @@ class OptionsView: UIView, UICollectionViewDelegate, UICollectionViewDataSource 
         
         collectionView = UICollectionView(frame: bounds, collectionViewLayout: layout)
         collectionView.backgroundColor = .clearColor()
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)

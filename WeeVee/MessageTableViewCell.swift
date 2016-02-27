@@ -28,7 +28,7 @@ class MessageTableViewCell: BubbleTableViewCell {
     }
     
     func updateImageViewConstraints() {
-        messageLabel.snp_makeConstraints { make in
+        messageLabel.snp_remakeConstraints { make in
             if !hasImage {
                 make.edges.equalTo(bubble).inset(innerMargin)
             } else {
