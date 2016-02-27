@@ -2,15 +2,15 @@
     "data": {
         "messages": [{
                      "type": "Text",
-                     "value": "Hey! Welcome to WeeVee!",
+                     "text": "Hey! Welcome to WeeVee!",
                      "avatar_url": ""
                      }, {
                      "type": "Text",
-                     "value": "It's a lovely day!",
+                     "text": "It's a lovely day!",
                      "avatar_url": ""
                      }, {
                      "type": "Text",
-                     "value": "Who do you want to learn about?",
+                     "text": "Who do you want to learn about?",
                      "avatar_url": ""
                      }],
         "options": [{

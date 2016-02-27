@@ -2,47 +2,47 @@
     "data": {
         "messages": [{
                      "type": "Text",
-                     "value": "F*** you.",
+                     "text": "F*** you.",
                      "avatar_url": ""
                      }, {
                      "type": "Text",
-                     "value": "Just kidding!",
+                     "text": "Just kidding!",
                      "avatar_url": ""
                      },{
                      "type": "Text",
-                     "value": "Here's a card!",
+                     "text": "Here's a card!",
                      "avatar_url": ""
                      },{
                      "type": "Text",
-                     "value": "Here's a card!",
+                     "text": "Here's a card!",
                      "avatar_url": ""
                      },{
                      "type": "Text",
-                     "value": "Here's a card!",
+                     "text": "Here's a card!",
                      "avatar_url": ""
                      },{
                      "type": "Text",
-                     "value": "Here's a card!",
+                     "text": "Here's a card!",
                      "avatar_url": ""
                      },{
                      "type": "Text",
-                     "value": "Here's a card!",
+                     "text": "Here's a card!",
                      "avatar_url": ""
                      },{
                      "type": "Text",
-                     "value": "Here's a card!",
+                     "text": "Here's a card!",
                      "avatar_url": ""
                      },{
                      "type": "Text",
-                     "value": "Here's a card!",
+                     "text": "Here's a card!",
                      "avatar_url": ""
                      },{
                      "type": "Text",
-                     "value": "Here's a card!",
+                     "text": "Here's a card!",
                      "avatar_url": ""
                      },{
                      "type": "Text",
-                     "value": "Here's a card!",
+                     "text": "Here's a card!",
                      "avatar_url": ""
                      }],
         "options": [{

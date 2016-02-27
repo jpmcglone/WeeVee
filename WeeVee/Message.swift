@@ -8,7 +8,7 @@ class Message: Mappable {
     
     var id: String?
     var type: MessageType?
-    var value: AnyObject?
+    var text: String?
     var avatarURL: NSURL?
     
     required init?(_ map: Map) {
@@ -18,7 +18,7 @@ class Message: Mappable {
     func mapping(map: Map) {
         id <- map["id"]
         type <- (map["type"], MessageTypeTransform())
-        value <- map["value"]
+        text <- map["text"]
         avatarURL <- (map["avatar_url"], URLTransform())
     }
 }

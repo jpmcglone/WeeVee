@@ -143,7 +143,7 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("message", forIndexPath: indexPath) as! MessageTableViewCell
             let message = messages[indexPath.row]
-            cell.messageLabel.text = message.value as? String
+            cell.messageLabel.text = message.text
             return cell
         }
     }
