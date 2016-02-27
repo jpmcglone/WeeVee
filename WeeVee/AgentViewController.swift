@@ -10,7 +10,6 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
     let baseURLString = "http://weevee.herokuapp.com/api"
     
     var messages = [Message]()
-    var typing = false
     
     var backgroundView: UIView!
     var imageView: UIImageView!
@@ -28,7 +27,7 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
         
         backgroundView = UIView(frame: view.bounds)
         tableView.backgroundView = backgroundView
-        tableView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0)
+        tableView.contentInset = UIEdgeInsetsMake(-20, 0, 20, 0)
         
         imageView = UIImageView(frame: backgroundView.bounds)
         imageView.image = UIImage(named: "background")
@@ -36,21 +35,15 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
         imageView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         backgroundView.addSubview(imageView)
         
-        let blurEffect = UIBlurEffect(style: .Dark)
-        blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.frame = backgroundView.bounds
-        blurView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        backgroundView.addSubview(blurView)
-        
         self.title = "WeeVee"
         
         view.backgroundColor = .darkGrayColor()
         
         tableView.separatorStyle = .None
-        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.registerClass(MessageTableViewCell.self, forCellReuseIdentifier: "message")
         tableView.registerClass(TypingTableViewCell.self, forCellReuseIdentifier: "typing")
 
+        
         // load sample json
         fetch(uri: "baskets")
     }
@@ -75,9 +68,15 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
         return message
     }
     
+    func reloadData() {
+        let contentOffset = tableView.contentOffset
+        tableView.reloadData()
+        tableView.contentOffset = contentOffset
+    }
+    
     func addMessage(message: Message, atIndex index: Int) {
         messages.insert(message, atIndex: index)
-        tableView.reloadData()
+        reloadData()
     }
     
     func fetch(basketJSON: AnyObject?) {
@@ -110,7 +109,7 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
             }
         }
         
-        tableView.reloadData()
+        reloadData()
     }
     
     // MARK: -
@@ -118,6 +117,8 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
         let message = messages[indexPath.row]
         if message.type == .Typing {
             let cell = tableView.dequeueReusableCellWithIdentifier("typing", forIndexPath: indexPath) as! TypingTableViewCell
+            cell.setNeedsLayout()
+            cell.setNeedsUpdateConstraints()
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("message", forIndexPath: indexPath) as! MessageTableViewCell
@@ -138,7 +139,7 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
             
             if let url = message.profileURL {
                 cell.profileImageView.sd_setImageWithURL(url, completed: { image, error, _, _ in
-                    cell.updateImageConstraints()
+                    cell.setNeedsUpdateConstraints()
                 })
                 cell.hasImage = true
             } else {
@@ -146,8 +147,7 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
                 cell.hasImage = false
             }
             cell.messageLabel.text = message.text
-            cell.updateImageConstraints()
-            
+            cell.setNeedsUpdateConstraints()
             return cell
         }
     }
@@ -156,11 +156,11 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
         return messages.count
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 400
     }
     
-    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     

@@ -20,24 +20,13 @@ class MessageTableViewCell: BubbleTableViewCell {
         profileImageView.backgroundColor = UIColor(white: 1, alpha: 0.1)
         contentView.addSubview(messageLabel)
         contentView.addSubview(profileImageView)
-        
-        messageLabel.snp_makeConstraints { make in
-            make.edges.equalTo(bubble).inset(innerMargin)
-        }
-
-        profileImageView.snp_makeConstraints { make in
-            make.left.equalTo(messageLabel)
-            make.height.equalTo(50)
-            make.width.equalTo(0)
-            make.bottom.equalTo(bubble)
-        }
     }
     
     func updateImageConstraints() {
         messageLabel.snp_remakeConstraints { make in
             if hasImage {
-                make.top.left.equalTo(bubble).inset(innerMargin)
-                make.right.greaterThanOrEqualTo(bubble).inset(innerMargin)
+                make.top.left.equalTo(bubble).offset(innerMargin)
+                make.right.lessThanOrEqualTo(bubble).offset(-innerMargin)
                 make.bottom.equalTo(profileImageView.snp_top)
             } else {
                 make.edges.equalTo(bubble).inset(innerMargin)
@@ -46,29 +35,36 @@ class MessageTableViewCell: BubbleTableViewCell {
         
         profileImageView.snp_remakeConstraints { make in
             make.left.equalTo(bubble).inset(innerMargin)
+            make.right.equalTo(bubble).offset(-innerMargin)
 
             if hasImage {
-                make.right.equalTo(bubble).offset(-innerMargin)
-                
+                print("if")
                 let maxHeight: CGFloat = 200
                 make.height.equalTo(maxHeight)
                 if let image = profileImageView.image where image.size.height > 0 {
+                    print("innerif")
                     let ratio = maxHeight / image.size.height
                     let width = image.size.width * ratio
                     make.width.equalTo(width)
                 } else {
+                    print("innerelse")
                     make.width.equalTo(maxHeight)
                 }
                 make.bottom.equalTo(bubble).offset(-innerMargin)
-                print("if")
             } else {
+                print("else")
                 make.height.equalTo(0)
-                make.width.equalTo(0)
                 make.bottom.equalTo(bubble)
                 make.top.greaterThanOrEqualTo(0)
             }
         }
     }
+    
+    override func updateConstraints() {
+        super.updateConstraints()
+        updateImageConstraints()
+    }
+    
     override func update() {
         super.update()
         messageLabel.textColor = isMe ? .tk_color(0x565656) : .whiteColor()
