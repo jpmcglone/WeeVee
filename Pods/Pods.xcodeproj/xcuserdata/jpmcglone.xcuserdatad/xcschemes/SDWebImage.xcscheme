@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '24EE9023D0E27738B2D3D98192BE13AE'
-               BlueprintName = 'ZenCopy-ZenCopy'
+               BlueprintIdentifier = '85F38EEE1073D85B650FB01D92FAAF10'
+               BlueprintName = 'SDWebImage'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'ZenCopy.bundle'>
+               BuildableName = 'SDWebImage.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

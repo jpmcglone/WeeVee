@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4C2BB582D62284578DDAEE39F2CDF85D'
+               BlueprintIdentifier = '0BFCC8E7B48C8DFBD1229D66FDF21EDA'
                BlueprintName = 'TK-TKit'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'TKit.bundle'>

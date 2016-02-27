@@ -5,4 +5,5 @@ target "WeeVee" do
   pod 'Alamofire'
   pod 'TK'
   pod 'SnapKit'
+  pod 'SDWebImage'
 end

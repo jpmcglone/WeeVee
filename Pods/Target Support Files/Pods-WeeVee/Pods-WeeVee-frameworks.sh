@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-WeeVee/Alamofire.framework"
   install_framework "Pods-WeeVee/ObjectMapper.framework"
+  install_framework "Pods-WeeVee/SDWebImage.framework"
   install_framework "Pods-WeeVee/SnapKit.framework"
   install_framework "Pods-WeeVee/TK.framework"
   install_framework "Pods-WeeVee/ZenCopy.framework"
@@ -93,6 +94,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-WeeVee/Alamofire.framework"
   install_framework "Pods-WeeVee/ObjectMapper.framework"
+  install_framework "Pods-WeeVee/SDWebImage.framework"
   install_framework "Pods-WeeVee/SnapKit.framework"
   install_framework "Pods-WeeVee/TK.framework"
   install_framework "Pods-WeeVee/ZenCopy.framework"

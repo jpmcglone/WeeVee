@@ -3,6 +3,7 @@ import Alamofire
 import ObjectMapper
 import TK
 import SnapKit
+import SDWebImage
 
 class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, OptionsViewDelegate {
     let tableView = UITableView()
@@ -142,8 +143,19 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("message", forIndexPath: indexPath) as! MessageTableViewCell
+            cell.profileImageView.sd_cancelCurrentImageLoad()
+
             let message = messages[indexPath.row]
+            if let url = message.profileURL {
+                cell.profileImageView.sd_setImageWithURL(url)
+                cell.hasImage = true
+            } else {
+                cell.profileImageView.image = nil
+                cell.hasImage = false
+            }
             cell.messageLabel.text = message.text
+            cell.updateImageViewConstraints()
+            cell.setNeedsUpdateConstraints()
             return cell
         }
     }

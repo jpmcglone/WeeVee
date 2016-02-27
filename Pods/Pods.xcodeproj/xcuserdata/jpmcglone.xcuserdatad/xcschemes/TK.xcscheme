@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9A6D0401B32DB700F30F7F43A50EC78E'
+               BlueprintIdentifier = 'C305A97CF10002B9DA5F8B1E197419BF'
                BlueprintName = 'TK'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'TK.framework'>

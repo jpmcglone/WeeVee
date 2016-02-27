@@ -11,6 +11,8 @@ class Message: Mappable {
     var text: String?
     var avatarURL: NSURL?
     
+    var profileURL: NSURL?
+    
     required init?(_ map: Map) {
         
     }
@@ -20,6 +22,7 @@ class Message: Mappable {
         type <- (map["type"], MessageTypeTransform())
         text <- map["text"]
         avatarURL <- (map["avatar_url"], URLTransform())
+        profileURL <- (map["profile_url"], URLTransform())
     }
 }
 

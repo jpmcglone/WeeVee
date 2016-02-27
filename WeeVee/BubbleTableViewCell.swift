@@ -20,9 +20,10 @@ class BubbleTableViewCell: UITableViewCell {
         selectionStyle = .None
 
         let height: CGFloat = 25
-        avatarImageView.backgroundColor = .whiteColor()
         avatarImageView.layer.cornerRadius = height / 2
         avatarImageView.layer.masksToBounds = true
+        avatarImageView.image = UIImage(named: "avatar")
+        avatarImageView.contentMode = .ScaleAspectFit
         
         bubble.backgroundColor = UIColor(white: 1, alpha: 1)
         bubble.layer.cornerRadius = 4
@@ -32,7 +33,7 @@ class BubbleTableViewCell: UITableViewCell {
         
         avatarImageView.snp_makeConstraints { make in
             make.left.equalTo(contentView).offset(margin)
-            make.bottom.equalTo(bubble).offset(-2)
+            make.bottom.equalTo(bubble)
             make.width.equalTo(height)
             make.height.equalTo(height)
         }

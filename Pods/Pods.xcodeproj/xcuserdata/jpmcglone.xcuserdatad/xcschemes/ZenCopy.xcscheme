@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C2CCEAFB2A5F1562A3A84F674C281C3C'
+               BlueprintIdentifier = '0E40B530932865B31EB222A4360A99A3'
                BlueprintName = 'ZenCopy'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'ZenCopy.framework'>

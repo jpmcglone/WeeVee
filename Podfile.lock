@@ -1,6 +1,9 @@
 PODS:
   - Alamofire (3.2.0)
   - ObjectMapper (1.1.5)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
   - SnapKit (0.19.1)
   - TK (0.9.0)
   - ZenCopy (1.2.1)
@@ -8,6 +11,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - ObjectMapper
+  - SDWebImage
   - SnapKit
   - TK
   - ZenCopy
@@ -15,10 +19,11 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
   ObjectMapper: 528b1a6677a6acac7747edd508576983e76a9148
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SnapKit: eff58d6e3451bf2f482db2eccf86aecf371dc62d
   TK: 318981aed8ae55552f49e16835aabf7d2b6dfcc4
   ZenCopy: bd15c1674e30b83112b10d83f8903f7a957337e2
 
-PODFILE CHECKSUM: 36825aa6cbe55f933a0eb83143f365ffe5b30f44
+PODFILE CHECKSUM: 703a34b58d0d3b57d02463d2f2c24b7e807411b7
 
 COCOAPODS: 1.0.0.beta.3
