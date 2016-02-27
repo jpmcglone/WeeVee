@@ -15,14 +15,16 @@ class Option: Mappable {
     
     var text: String?
     var type: OptionType? = .Other
-
+    var uri: String?
+    
     required init?(_ map: Map) {
         
     }
     
     func mapping(map: Map) {
         text <- map["text"]
-        type <- map["type"] // TODO: custom transform
+        type <- (map["type"], OptionTransform())
+        uri <- map["uri"]
     }
 }
 

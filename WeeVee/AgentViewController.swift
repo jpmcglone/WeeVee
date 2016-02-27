@@ -60,9 +60,7 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.registerClass(TypingTableViewCell.self, forCellReuseIdentifier: "typing")
 
         // load sample json
-        let basketJSON = loadJSON("sample")?["data"]
-        fetch(basketJSON)
-        
+        fetch(uri: "baskets")
         
         view.addSubview(optionsView)
         
@@ -75,6 +73,20 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
             make.bottom.equalTo(view)
             make.width.equalTo(view)
             make.height.equalTo(80)
+        }
+    }
+    
+    func fetch(uri uri: String) {
+        let url = "\(baseURLString)/\(uri)"
+        
+        manager.request(.GET, url, parameters: nil).responseJSON { response in
+            switch response.result {
+            case .Success(let data):
+                let json = data as! [String : AnyObject]
+                self.fetch(json["data"])
+            case .Failure(let error):
+                print(error)
+            }
         }
     }
     
@@ -149,11 +161,11 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     // Don't add .json to fileName
-    func loadJSON(fileName: String) -> NSDictionary? {
+    func loadJSON(fileName: String) -> [String : AnyObject]? {
         if let path = NSBundle.mainBundle().pathForResource(fileName, ofType: "json") {
             do {
                 let jsonData = try NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe)
-                let jsonResult = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers) as? NSDictionary
+                let jsonResult = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers) as? [String : AnyObject]
                 return jsonResult
             } catch {
                 // TODO
@@ -184,8 +196,6 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func optionsView(optionsView: OptionsView, didSelectOption option: Option) {
         print(option.text)
         setOptions(nil)
-        // TODO: url :D
-        let basketJSON = loadJSON("sample2")?["data"]
-        fetch(basketJSON)
+        fetch(uri: option.uri!)
     }
 }
