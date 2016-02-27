@@ -5,7 +5,7 @@ import ObjectMapper
 class AgentViewController: UITableViewController {
     
     let manager = Alamofire.Manager()
-    let basket = [Basket]()
+    var messages = [Message]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +19,21 @@ class AgentViewController: UITableViewController {
         
         // load sample json
         let basketJSON = loadJSON("sample")?["data"]
-        let basket = Mapper<Basket>().map(basketJSON)
-        
+        if let basket = Mapper<Basket>().map(basketJSON) {
+            loadBasket(basket) { basket, error in
+                
+            }
+        }
+    }
+    
+    func loadBasket(basket: Basket, completion:(basket: Basket, error: NSError) -> ()) {
+        // TODO: one message at a time 
+        if let basketMessages = basket.messages {
+            for message in basketMessages {
+                messages.append(message)
+            }
+            tableView.reloadData()
+        }
     }
     
     func configureAlamofire() {
@@ -30,11 +43,13 @@ class AgentViewController: UITableViewController {
     // MARK: -
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MessageTableViewCell
+        let message = messages[indexPath.row]
+        cell.messageLabel.text = message.value as? String
         return cell
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return messages.count
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

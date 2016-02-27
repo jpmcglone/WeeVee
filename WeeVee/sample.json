@@ -6,6 +6,10 @@
                      "avatar_url": ""
                      }, {
                      "type": "Text",
+                     "value": "It's a lovely day!",
+                     "avatar_url": ""
+                     }, {
+                     "type": "Text",
                      "value": "Who do you want to learn about?",
                      "avatar_url": ""
                      }],
