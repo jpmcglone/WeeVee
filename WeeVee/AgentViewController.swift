@@ -40,6 +40,7 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
         view.backgroundColor = .darkGrayColor()
         
         tableView.separatorStyle = .None
+        tableView.registerClass(MessageTableViewCell.self, forCellReuseIdentifier: "card")
         tableView.registerClass(MessageTableViewCell.self, forCellReuseIdentifier: "message")
         tableView.registerClass(TypingTableViewCell.self, forCellReuseIdentifier: "typing")
 
@@ -125,7 +126,9 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
             cell.setNeedsUpdateConstraints()
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("message", forIndexPath: indexPath) as! MessageTableViewCell
+            let hasImage = message.profileURL != nil
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier(hasImage ? "message" : "card", forIndexPath: indexPath) as! MessageTableViewCell
             cell.profileImageView.sd_cancelCurrentImageLoad()
             
             if let type = message.type where type != .Other{
@@ -177,6 +180,14 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
     }
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return optionsView
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let message = messages[indexPath.row]
+        
+        if message.type == .Profile {
+            print("profile")
+        }
     }
     
     // Don't add .json to fileName
