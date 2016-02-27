@@ -6,12 +6,17 @@ class Message: Mappable {
         case Text, Other
     }
     
+    var isMe = false
     var id: String?
     var type: MessageType?
     var text: String?
     var avatarURL: NSURL?
     
     var profileURL: NSURL?
+    
+    init() {
+        
+    }
     
     required init?(_ map: Map) {
         

@@ -144,8 +144,9 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("message", forIndexPath: indexPath) as! MessageTableViewCell
             cell.profileImageView.sd_cancelCurrentImageLoad()
-
+            
             let message = messages[indexPath.row]
+            cell.isMe = message.isMe
             if let url = message.profileURL {
                 cell.profileImageView.sd_setImageWithURL(url)
                 cell.hasImage = true
@@ -207,6 +208,12 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // Mark: - 
     func optionsView(optionsView: OptionsView, didSelectOption option: Option) {
         print(option.text)
+        // make and add fake message
+        let message = Message()
+        message.text = option.text
+        message.isMe = true
+        messages.append(message)
+        
         setOptions(nil)
         fetch(uri: option.uri!)
     }

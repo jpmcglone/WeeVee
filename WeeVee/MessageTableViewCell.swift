@@ -7,7 +7,7 @@ class MessageTableViewCell: BubbleTableViewCell {
     let profileImageView = UIImageView()
     var hasImage = false {
         didSet {
-            updateImageViewConstraints()
+            setNeedsUpdateConstraints()
         }
     }
     
@@ -20,6 +20,11 @@ class MessageTableViewCell: BubbleTableViewCell {
         profileImageView.backgroundColor = UIColor(white: 1, alpha: 0.1)
         contentView.addSubview(messageLabel)
         contentView.addSubview(profileImageView)
+    }
+    
+    override func updateConstraints() {
+        super.updateConstraints()
+        updateImageViewConstraints()
     }
     
     func updateImageViewConstraints() {
