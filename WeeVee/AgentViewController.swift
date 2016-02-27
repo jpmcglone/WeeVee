@@ -77,6 +77,10 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
     func addMessage(message: Message, atIndex index: Int) {
         messages.insert(message, atIndex: index)
         reloadData()
+        // Really bad hack
+        NSTimer.tk_scheduledTimer(0.05) { () -> () in
+            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count-1, inSection: 0), atScrollPosition: .Bottom, animated: true)
+        }
     }
     
     func fetch(basketJSON: AnyObject?) {
@@ -200,10 +204,9 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
         let message = Message()
         message.text = option.text
         message.isMe = true
-        
+        setOptions(nil)
         addMessage(message, atIndex: messages.count)
         
-        setOptions(nil)
         fetch(uri: option.uri!)
     }
 }

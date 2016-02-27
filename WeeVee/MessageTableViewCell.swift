@@ -39,8 +39,11 @@ class MessageTableViewCell: BubbleTableViewCell {
 
             if hasImage {
                 print("if")
+
+                make.bottom.equalTo(bubble).offset(-innerMargin)
                 let maxHeight: CGFloat = 200
                 make.height.equalTo(maxHeight)
+                make.top.greaterThanOrEqualTo(0)
                 if let image = profileImageView.image where image.size.height > 0 {
                     print("innerif")
                     let ratio = maxHeight / image.size.height
@@ -50,7 +53,6 @@ class MessageTableViewCell: BubbleTableViewCell {
                     print("innerelse")
                     make.width.equalTo(maxHeight)
                 }
-                make.bottom.equalTo(bubble).offset(-innerMargin)
             } else {
                 print("else")
                 make.height.equalTo(0)
