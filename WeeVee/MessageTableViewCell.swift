@@ -34,12 +34,21 @@ class MessageTableViewCell: BubbleTableViewCell {
     }
     
     func updateImageConstraints() {
+        messageLabel.snp_remakeConstraints { make in
+            if hasImage {
+                make.top.left.equalTo(bubble).inset(innerMargin)
+                make.right.greaterThanOrEqualTo(bubble).inset(innerMargin)
+                make.bottom.equalTo(profileImageView.snp_top)
+            } else {
+                make.edges.equalTo(bubble).inset(innerMargin)
+            }
+        }
+        
         profileImageView.snp_remakeConstraints { make in
             make.left.equalTo(bubble).inset(innerMargin)
 
             if hasImage {
-                make.trailing.equalTo(bubble).offset(-innerMargin)
-                make.top.equalTo(messageLabel.snp_bottom)
+                make.right.equalTo(bubble).offset(-innerMargin)
                 
                 let maxHeight: CGFloat = 200
                 make.height.equalTo(maxHeight)
@@ -49,20 +58,12 @@ class MessageTableViewCell: BubbleTableViewCell {
                     make.width.equalTo(width)
                 }
                 make.bottom.equalTo(bubble).offset(-innerMargin)
+                print("if")
             } else {
                 make.height.equalTo(0)
                 make.width.equalTo(0)
                 make.bottom.equalTo(bubble)
-            }
-        }
-        
-        messageLabel.snp_remakeConstraints { make in
-            if hasImage {
-                make.top.left.right.equalTo(bubble).inset(innerMargin)
-                make.bottom.equalTo(profileImageView.snp_top)
-            } else {
-                make.edges.equalTo(bubble).inset(innerMargin)
-                
+                make.top.greaterThanOrEqualTo(0)
             }
         }
     }

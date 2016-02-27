@@ -5,18 +5,12 @@ import TK
 import SnapKit
 import SDWebImage
 
-class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, OptionsViewDelegate {
-    let tableView = UITableView()
-    
+class AgentViewController: UITableViewController, OptionsViewDelegate {
     let manager = Alamofire.Manager()
     let baseURLString = "http://weevee.herokuapp.com/api"
     
     var messages = [Message]()
-    var typing = false {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var typing = false
     
     var backgroundView: UIView!
     var imageView: UIImageView!
@@ -28,9 +22,7 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         
         optionsView.delegate = self
-        
-        view.addSubview(tableView)
-
+    
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -61,10 +53,6 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         // load sample json
         fetch(uri: "baskets")
-        
-        view.addSubview(optionsView)
-
-        updateOptionsViewConstraints()
     }
     
     func fetch(uri uri: String) {
@@ -81,36 +69,65 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    func typingMessage() -> Message {
+        let message = Message()
+        message.type = .Typing
+        return message
+    }
+    
+    func addMessage(message: Message, atIndex index: Int) {
+        messages.append(message)
+        UIView.setAnimationsEnabled(false)
+        tableView.beginUpdates()
+        tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .None)
+        tableView.endUpdates()
+        UIView.setAnimationsEnabled(true)
+    }
+    
     func fetch(basketJSON: AnyObject?) {
-        typing = true
+        addMessage(typingMessage(), atIndex: messages.count)
+
         NSTimer.tk_scheduledTimer(1) {
             if let basket = Mapper<Basket>().map(basketJSON) {
                 if let basketMessages = basket.messages {
-                    self.typing = true
                     self.loadMessages(basketMessages) {
                         NSTimer.tk_scheduledTimer(0.5) {
                             self.setOptions(basket.options!)
                         }
                     }
-                } else {
-                    self.typing = false
                 }
-            } else {
-                self.typing = false
             }
         }
     }
     
     func loadMessages(var messages: [Message], completion: ()->()) {
         let message = messages.removeFirst()
-        self.messages.append(message)
-        tableView.reloadData()
         
+        let index = self.messages.count-1
+    
+        self.messages.insert(message, atIndex: index)
+
+        let insertIndexPaths = [NSIndexPath(forRow: index, inSection: 0)]
+        var deleteIndexPaths: [NSIndexPath] = []
+     
         if messages.count == 0 {
-            typing = false
-            tableView.reloadData()
+            let index = self.messages.count-1
+            self.messages.removeAtIndex(index)
+            deleteIndexPaths = [NSIndexPath(forRow: index, inSection: 0)]
+            
+            UIView.setAnimationsEnabled(false)
+            tableView.beginUpdates()
+            tableView.reloadRowsAtIndexPaths(insertIndexPaths, withRowAnimation: .None)
+            tableView.endUpdates()
+            UIView.setAnimationsEnabled(true)
             completion()
         } else {
+            UIView.setAnimationsEnabled(false)
+            tableView.beginUpdates()
+            tableView.insertRowsAtIndexPaths(insertIndexPaths, withRowAnimation: .None)
+            tableView.endUpdates()
+            UIView.setAnimationsEnabled(true)
+
             NSTimer.tk_scheduledTimer(1) {
                 self.loadMessages(messages, completion: completion)
             }
@@ -118,15 +135,15 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     // MARK: -
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if typing && indexPath.row == messages.count {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let message = messages[indexPath.row]
+        if message.type == .Typing {
             let cell = tableView.dequeueReusableCellWithIdentifier("typing", forIndexPath: indexPath) as! TypingTableViewCell
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("message", forIndexPath: indexPath) as! MessageTableViewCell
             cell.profileImageView.sd_cancelCurrentImageLoad()
             
-            let message = messages[indexPath.row]
             
             if let type = message.type where type != .Other{
                 switch type {
@@ -142,7 +159,9 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.isMe = message.isMe
             
             if let url = message.profileURL {
-                cell.profileImageView.sd_setImageWithURL(url)
+                cell.profileImageView.sd_setImageWithURL(url, completed: { image, error, _, _ in
+                    cell.updateImageConstraints()
+                })
                 cell.hasImage = true
             } else {
                 cell.profileImageView.image = nil
@@ -155,16 +174,27 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count + (typing ? 1 : 0)
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+        return 80
+    }
+
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 80
+    }
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return optionsView
     }
     
     // Don't add .json to fileName
@@ -181,31 +211,8 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return nil
     }
     
-    func updateOptionsViewConstraints() {
-        tableView.snp_remakeConstraints { make in
-            if self.optionsView.options == nil {
-                make.edges.equalTo(view)
-            } else {
-                make.top.left.right.equalTo(view)
-                make.bottom.equalTo(optionsView.snp_top)
-            }
-        }
-        
-        optionsView.snp_remakeConstraints { make in
-            if self.optionsView.options == nil {
-                make.height.equalTo(0)
-            } else {
-                make.height.equalTo(80)
-            }
-            make.bottom.equalTo(view)
-            make.width.equalTo(view)
-            make.top.greaterThanOrEqualTo(0)
-        }
-    }
-    
     func setOptions(options: [Option]?) {
         optionsView.options = options
-        updateOptionsViewConstraints()
     }
     
     // Mark: - 
@@ -215,8 +222,8 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let message = Message()
         message.text = option.text
         message.isMe = true
-        messages.append(message)
-        tableView.reloadData()
+        
+        addMessage(message, atIndex: messages.count)
         
         setOptions(nil)
         fetch(uri: option.uri!)

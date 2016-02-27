@@ -6,7 +6,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let agentViewController = AgentViewController()
+        let agentViewController = AgentViewController(style: .Grouped)
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         let navigationController = UINavigationController(rootViewController: agentViewController)
