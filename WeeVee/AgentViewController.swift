@@ -4,13 +4,37 @@ import ObjectMapper
 import TK
 
 class AgentViewController: UITableViewController {
-    
     let manager = Alamofire.Manager()
     var messages = [Message]()
-    var typing = false
+    var typing = false {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    var backgroundView: UIView!
+    var imageView: UIImageView!
+    var blurView: UIVisualEffectView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(tableView)
+        
+        backgroundView = UIView(frame: view.bounds)
+        backgroundView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        tableView.backgroundView = backgroundView
+        
+        imageView = UIImageView(frame: backgroundView.bounds)
+        imageView.image = UIImage(named: "background")
+        imageView.contentMode = .ScaleAspectFill
+        imageView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        backgroundView.addSubview(imageView)
+        
+        let blurEffect = UIBlurEffect(style: .Dark)
+        blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = backgroundView.bounds
+        blurView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        backgroundView.addSubview(blurView)
         
         self.title = "WeeVee"
         
@@ -19,16 +43,25 @@ class AgentViewController: UITableViewController {
         
         tableView.separatorStyle = .None
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.registerClass(MessageTableViewCell.self, forCellReuseIdentifier: "cell")
-        
+        tableView.registerClass(MessageTableViewCell.self, forCellReuseIdentifier: "message")
+        tableView.registerClass(TypingTableViewCell.self, forCellReuseIdentifier: "typing")
+
         // load sample json
         let basketJSON = loadJSON("sample")?["data"]
-        if let basket = Mapper<Basket>().map(basketJSON) {
-            loadBasket(basket) { basket, error in
-                if let basketMessages = basket.messages {
-                    self.typing = true
-                    self.loadMessages(basketMessages)
+        typing = true
+        
+        NSTimer.tk_scheduledTimer(1) {
+            if let basket = Mapper<Basket>().map(basketJSON) {
+                self.loadBasket(basket) { basket, error in
+                    if let basketMessages = basket.messages {
+                        self.typing = true
+                        self.loadMessages(basketMessages)
+                    } else {
+                        self.typing = false
+                    }
                 }
+            } else {
+                self.typing = false
             }
         }
     }
@@ -60,18 +93,18 @@ class AgentViewController: UITableViewController {
             }
         }
     }
-
     
     // MARK: -
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MessageTableViewCell
         if typing && indexPath.row == messages.count {
-            cell.messageLabel.text = "..."
+            let cell = tableView.dequeueReusableCellWithIdentifier("typing", forIndexPath: indexPath) as! TypingTableViewCell
+            return cell
         } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("message", forIndexPath: indexPath) as! MessageTableViewCell
             let message = messages[indexPath.row]
             cell.messageLabel.text = message.value as? String
+            return cell
         }
-        return cell
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
