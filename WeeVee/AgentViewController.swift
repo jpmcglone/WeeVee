@@ -1,14 +1,18 @@
 import UIKit
 import Alamofire
 import ObjectMapper
+import TK
 
 class AgentViewController: UITableViewController {
     
     let manager = Alamofire.Manager()
     var messages = [Message]()
+    var typing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "WeeVee"
         
         configureAlamofire()
         view.backgroundColor = .darkGrayColor()
@@ -21,35 +25,57 @@ class AgentViewController: UITableViewController {
         let basketJSON = loadJSON("sample")?["data"]
         if let basket = Mapper<Basket>().map(basketJSON) {
             loadBasket(basket) { basket, error in
-                
+                if let basketMessages = basket.messages {
+                    self.typing = true
+                    self.loadMessages(basketMessages)
+                }
             }
         }
     }
     
-    func loadBasket(basket: Basket, completion:(basket: Basket, error: NSError) -> ()) {
-        // TODO: one message at a time 
-        if let basketMessages = basket.messages {
-            for message in basketMessages {
-                messages.append(message)
-            }
-            tableView.reloadData()
-        }
+    func loadBasket(basket: Basket, completion:(basket: Basket, error: NSError?) -> ()) {
+        // TODO: alamofire
+        completion(basket: basket, error: nil)
     }
     
     func configureAlamofire() {
         
     }
     
+    func loadMessages(var messages: [Message]) {
+        if messages.count == 0 {
+            return
+        }
+        
+        let message = messages.removeFirst()
+        self.messages.append(message)
+        tableView.reloadData()
+        
+        if messages.count == 0 {
+            typing = false
+            tableView.reloadData()
+        } else {
+            NSTimer.tk_scheduledTimer(1) {
+                self.loadMessages(messages)
+            }
+        }
+    }
+
+    
     // MARK: -
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MessageTableViewCell
-        let message = messages[indexPath.row]
-        cell.messageLabel.text = message.value as? String
+        if typing && indexPath.row == messages.count {
+            cell.messageLabel.text = "..."
+        } else {
+            let message = messages[indexPath.row]
+            cell.messageLabel.text = message.value as? String
+        }
         return cell
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return messages.count + (typing ? 1 : 0)
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
