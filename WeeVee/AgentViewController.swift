@@ -35,7 +35,6 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.dataSource = self
         
         backgroundView = UIView(frame: view.bounds)
-        backgroundView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         tableView.backgroundView = backgroundView
         tableView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0)
         
@@ -65,11 +64,6 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         view.addSubview(optionsView)
 
-        tableView.snp_makeConstraints { make in
-            make.top.leading.trailing.equalTo(view)
-            make.bottom.equalTo(optionsView.snp_top)
-        }
-        
         updateOptionsViewConstraints()
     }
     
@@ -111,7 +105,6 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let message = messages.removeFirst()
         self.messages.append(message)
         tableView.reloadData()
-        tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         
         if messages.count == 0 {
             typing = false
@@ -134,7 +127,20 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.profileImageView.sd_cancelCurrentImageLoad()
             
             let message = messages[indexPath.row]
+            
+            if let type = message.type where type != .Other{
+                switch type {
+                case .Profile:
+                    cell.messageLabel.font = UIFont.boldSystemFontOfSize(10)
+                default:
+                    cell.messageLabel.font = UIFont.systemFontOfSize(18)
+                }
+            } else {
+                cell.messageLabel.font = UIFont.systemFontOfSize(18)
+            }
+            
             cell.isMe = message.isMe
+            
             if let url = message.profileURL {
                 cell.profileImageView.sd_setImageWithURL(url)
                 cell.hasImage = true
@@ -143,7 +149,8 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.hasImage = false
             }
             cell.messageLabel.text = message.text
-            cell.setNeedsUpdateConstraints()
+            cell.updateImageConstraints()
+            
             return cell
         }
     }
@@ -175,6 +182,15 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func updateOptionsViewConstraints() {
+        tableView.snp_remakeConstraints { make in
+            if self.optionsView.options == nil {
+                make.edges.equalTo(view)
+            } else {
+                make.top.left.right.equalTo(view)
+                make.bottom.equalTo(optionsView.snp_top)
+            }
+        }
+        
         optionsView.snp_remakeConstraints { make in
             if self.optionsView.options == nil {
                 make.height.equalTo(0)
@@ -183,16 +199,13 @@ class AgentViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             make.bottom.equalTo(view)
             make.width.equalTo(view)
+            make.top.greaterThanOrEqualTo(0)
         }
-        view.setNeedsUpdateConstraints()
     }
     
     func setOptions(options: [Option]?) {
         optionsView.options = options
         updateOptionsViewConstraints()
-        NSTimer.tk_scheduledTimer(0.01) {
-            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self.messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
-        }
     }
     
     // Mark: - 

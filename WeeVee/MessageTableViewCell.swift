@@ -20,32 +20,27 @@ class MessageTableViewCell: BubbleTableViewCell {
         profileImageView.backgroundColor = UIColor(white: 1, alpha: 0.1)
         contentView.addSubview(messageLabel)
         contentView.addSubview(profileImageView)
-    }
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        updateImageViewConstraints()
-    }
-    
-    func updateImageViewConstraints() {
-        messageLabel.snp_remakeConstraints { make in
-            if !hasImage {
-                make.edges.equalTo(bubble).inset(innerMargin)
-            } else {
-                make.top.left.right.equalTo(bubble).inset(innerMargin)
-            }
-        }
         
-        profileImageView.snp_remakeConstraints { make in
+        messageLabel.snp_makeConstraints { make in
+            make.edges.equalTo(bubble).inset(innerMargin)
+        }
+
+        profileImageView.snp_makeConstraints { make in
             make.left.equalTo(messageLabel)
-            
-            if !hasImage {
-                make.height.equalTo(0)
-                make.width.equalTo(0)
-                make.bottom.equalTo(bubble)
-            } else {
-                make.right.equalTo(bubble).inset(innerMargin)
+            make.height.equalTo(50)
+            make.width.equalTo(0)
+            make.bottom.equalTo(bubble)
+        }
+    }
+    
+    func updateImageConstraints() {
+        profileImageView.snp_remakeConstraints { make in
+            make.left.equalTo(bubble).inset(innerMargin)
+
+            if hasImage {
+                make.trailing.equalTo(bubble).offset(-innerMargin)
                 make.top.equalTo(messageLabel.snp_bottom)
+                
                 let maxHeight: CGFloat = 200
                 make.height.equalTo(maxHeight)
                 if let image = profileImageView.image where image.size.height > 0 {
@@ -53,11 +48,24 @@ class MessageTableViewCell: BubbleTableViewCell {
                     let width = image.size.width * ratio
                     make.width.equalTo(width)
                 }
-                make.bottom.equalTo(bubble).inset(innerMargin)
+                make.bottom.equalTo(bubble).offset(-innerMargin)
+            } else {
+                make.height.equalTo(0)
+                make.width.equalTo(0)
+                make.bottom.equalTo(bubble)
+            }
+        }
+        
+        messageLabel.snp_remakeConstraints { make in
+            if hasImage {
+                make.top.left.right.equalTo(bubble).inset(innerMargin)
+                make.bottom.equalTo(profileImageView.snp_top)
+            } else {
+                make.edges.equalTo(bubble).inset(innerMargin)
+                
             }
         }
     }
-    
     override func update() {
         super.update()
         messageLabel.textColor = isMe ? .tk_color(0x565656) : .whiteColor()

@@ -3,7 +3,7 @@ import ObjectMapper
 
 class Message: Mappable {
     enum MessageType {
-        case Text, Other
+        case Other, Text, Profile
     }
     
     var isMe = false
@@ -42,6 +42,8 @@ class MessageTypeTransform: TransformType {
             switch type {
             case "Text":
                 return .Text
+            case "Profile":
+                return .Profile
             default:
                 return .Other
             }
@@ -56,6 +58,8 @@ class MessageTypeTransform: TransformType {
                 return "Text"
             case .Other:
                 return "Other"
+            case .Profile:
+                return "Profile"
             }
         }
         return nil
