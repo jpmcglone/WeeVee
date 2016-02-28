@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4032711C1C8179A9001B6AF0 /* sample2.json in Resources */ = {isa = PBXBuildFile; fileRef = 4032711B1C8179A9001B6AF0 /* sample2.json */; };
-		403271201C825F3D001B6AF0 /* DeepDiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4032711F1C825F3D001B6AF0 /* DeepDiveViewController.swift */; };
+		403271201C825F3D001B6AF0 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4032711F1C825F3D001B6AF0 /* EventViewController.swift */; };
 		403271221C82602F001B6AF0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403271211C82602F001B6AF0 /* Profile.swift */; };
 		403271241C826789001B6AF0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403271231C826789001B6AF0 /* ProfileViewController.swift */; };
 		40330AED1C813BDB00DA80DF /* sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 40330AEC1C813BDB00DA80DF /* sample.json */; };
@@ -34,7 +34,7 @@
 /* Begin PBXFileReference section */
 		3A0AB9943A19D6178B90905E /* Pods_WeeVee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeeVee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4032711B1C8179A9001B6AF0 /* sample2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample2.json; sourceTree = "<group>"; };
-		4032711F1C825F3D001B6AF0 /* DeepDiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepDiveViewController.swift; sourceTree = "<group>"; };
+		4032711F1C825F3D001B6AF0 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		403271211C82602F001B6AF0 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		403271231C826789001B6AF0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ../ProfileViewController.swift; sourceTree = "<group>"; };
 		40330AEC1C813BDB00DA80DF /* sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample.json; sourceTree = "<group>"; };
@@ -116,6 +116,16 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		409044801C82944000CD5483 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				40C2E7FD1C8115FD00FBCDBE /* AgentViewController.swift */,
+				403271231C826789001B6AF0 /* ProfileViewController.swift */,
+				4032711F1C825F3D001B6AF0 /* EventViewController.swift */,
+			);
+			name = Features;
+			sourceTree = "<group>";
+		};
 		40C2E7DF1C8115D500FBCDBE = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +147,7 @@
 		40C2E7EA1C8115D500FBCDBE /* WeeVee */ = {
 			isa = PBXGroup;
 			children = (
+				409044801C82944000CD5483 /* Features */,
 				40330AF71C81650000DA80DF /* Views */,
 				40330AEE1C8150CC00DA80DF /* TableViewCells */,
 				40330AEB1C81330600DA80DF /* Models */,
@@ -145,9 +156,6 @@
 				40C2E7F71C8115D500FBCDBE /* Info.plist */,
 				40C2E7F41C8115D500FBCDBE /* LaunchScreen.storyboard */,
 				40C2E7ED1C8115D500FBCDBE /* ViewController.swift */,
-				40C2E7FD1C8115FD00FBCDBE /* AgentViewController.swift */,
-				403271231C826789001B6AF0 /* ProfileViewController.swift */,
-				4032711F1C825F3D001B6AF0 /* DeepDiveViewController.swift */,
 			);
 			path = WeeVee;
 			sourceTree = "<group>";
@@ -284,7 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				403271201C825F3D001B6AF0 /* DeepDiveViewController.swift in Sources */,
+				403271201C825F3D001B6AF0 /* EventViewController.swift in Sources */,
 				40330AFB1C81677900DA80DF /* OptionCollectionViewCell.swift in Sources */,
 				4090447F1C828D6400CD5483 /* Location.swift in Sources */,
 				40C2E7EE1C8115D500FBCDBE /* ViewController.swift in Sources */,

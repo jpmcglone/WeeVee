@@ -7,7 +7,7 @@ import SDWebImage
 import MapKit
 
 class AgentViewController: UITableViewController, OptionsViewDelegate {
-    let time: NSTimeInterval = 0.02
+    let time: NSTimeInterval = 1.0
     let manager = Alamofire.Manager()
     let baseURLString = "http://weevee.herokuapp.com/api"
     
@@ -201,6 +201,9 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
             let profileViewController = ProfileViewController()
             self.navigationController?.pushViewController(profileViewController, animated: true)
             profileViewController.message = message
+        } else if message.type == .Event {
+            let eventViewController = EventViewController()
+            self.navigationController?.pushViewController(eventViewController, animated: true)
         }
     }
     

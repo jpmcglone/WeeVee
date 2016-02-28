@@ -1,7 +1,6 @@
 import UIKit
 
-class DeepDiveViewController: UIViewController {
-    
+class EventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .redColor()

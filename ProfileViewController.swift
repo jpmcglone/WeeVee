@@ -24,8 +24,8 @@ class ProfileViewController: UIViewController {
         descriptionLabel.textColor = .whiteColor()
         descriptionLabel.font = UIFont.boldSystemFontOfSize(14)
         
-        descriptionLabel.text = "lajsdl kajsdl kajsdlk jalsdkj alksjd lkajd kljasljasdljalksdj alkdjs lkajsd"
         descriptionLabel.numberOfLines = 0
+        descriptionLabel.textAlignment = .Center
         view.addSubview(descriptionLabel)
         
         imageView.contentMode = .ScaleAspectFill
@@ -44,14 +44,15 @@ class ProfileViewController: UIViewController {
         
         descriptionLabel.snp_makeConstraints { make in
             make.top.equalTo(imageView.snp_bottom).offset(20)
-            make.left.equalTo(imageView)
-            make.right.equalTo(imageView)
+            make.left.equalTo(view).offset(10)
+            make.right.equalTo(view).offset(-10)
         }
     }
     
     func update() {
         if let message = message {
             self.title = message.text
+            self.descriptionLabel.text = message.description
             imageView.sd_setImageWithURL(message.profileURL)
         }
     }
