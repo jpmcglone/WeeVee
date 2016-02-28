@@ -1,8 +1,10 @@
 import UIKit
 
 class EventViewController: UIViewController {
+//    let
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .redColor()
+        view.backgroundColor = .blueColor()
     }
 }
