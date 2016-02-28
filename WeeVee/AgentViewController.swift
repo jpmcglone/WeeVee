@@ -7,7 +7,7 @@ import SDWebImage
 import MapKit
 
 class AgentViewController: UITableViewController, OptionsViewDelegate {
-    let time: NSTimeInterval = 1.0
+    let time: NSTimeInterval = 0.02
     let manager = Alamofire.Manager()
     let baseURLString = "http://weevee.herokuapp.com/api"
     
@@ -120,6 +120,15 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
         reloadData()
     }
     
+    func dateFromString(string: String) -> NSDate {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let posix = NSLocale(localeIdentifier: "en_US_POSIX")
+        formatter.locale = posix
+        let date = formatter.dateFromString(string)
+        return date!
+    }
+    
     // MARK: -
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let message = messages[indexPath.row]
@@ -132,8 +141,28 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
             let cell = tableView.dequeueReusableCellWithIdentifier("event", forIndexPath: indexPath) as! EventTableViewCell
             cell.coordinate = CLLocationCoordinate2DMake(37.8075664, -122.4310133)
 
-            cell.titleLabel.text = message.text
+            let x = message.profiles?.count ?? 0
+            var text = ""
+            if x == 1 {
+                text = "\(message.text!) - 1 speakers"
+            } else {
+                text = "\(message.text!) - \(x) speakers"
+            }
             
+            if let startTime = message.startTime, endTime = message.endTime {
+                let start = dateFromString(startTime)
+                let end = dateFromString(endTime)
+                
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "h:mma"
+                
+                let s = formatter.stringFromDate(start)
+                let e = formatter.stringFromDate(end)
+                
+                let time = "\(s) - \(e)"
+                text = "\(text)\n\(time)"
+            }
+            cell.titleLabel.text = text
 //            cell.coordinate = CLLocationCoordinate2DMake(message.location?.latitude ?? 0, message.location?.longitude ?? 0)
 
             return cell

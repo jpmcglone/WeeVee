@@ -1,10 +1,12 @@
 import UIKit
 import SnapKit
+import TK
 
 class ProfileViewController: UIViewController {
     let backgroundView = UIImageView()
     let imageView = UIImageView()
     let descriptionLabel = UILabel()
+    let companyLabel = UILabel()
     
     var message: Message? {
         didSet {
@@ -15,6 +17,12 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blackColor()
+        
+        companyLabel.textColor = .redColor() //.tk_color(0x6CFF52)
+        companyLabel.font = UIFont.boldSystemFontOfSize(12)
+        companyLabel.text = "Company"
+        
+        view.addSubview(companyLabel)
         
         backgroundView.image = UIImage(named: "background")
         backgroundView.contentMode = .ScaleAspectFill
@@ -42,8 +50,14 @@ class ProfileViewController: UIViewController {
             make.edges.equalTo(view)
         }
         
-        descriptionLabel.snp_makeConstraints { make in
+        companyLabel.snp_makeConstraints { make in
             make.top.equalTo(imageView.snp_bottom).offset(20)
+            make.left.equalTo(view).offset(10)
+            make.right.equalTo(view).offset(-10)
+        }
+        
+        descriptionLabel.snp_makeConstraints { make in
+            make.top.equalTo(companyLabel.snp_bottom).offset(10)
             make.left.equalTo(view).offset(10)
             make.right.equalTo(view).offset(-10)
         }

@@ -12,6 +12,9 @@ class Message: Mappable {
     var text: String?
     var avatarURL: NSURL?
     var description: String?
+    var profiles: [Profile]?
+    var startTime: String?
+    var endTime: String?
     
     var profileURL: NSURL?
     var location: Location?
@@ -35,6 +38,9 @@ class Message: Mappable {
         profileURL <- (map["profile_url"], URLTransform())
         location <- map["location"]
         description <- map["description"]
+        profiles <- map["profiles"]
+        startTime <- map["start"]
+        endTime <- map["end"]
     }
 }
 

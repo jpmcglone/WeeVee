@@ -28,9 +28,9 @@ class EventTableViewCell: BubbleTableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         mapView.userInteractionEnabled = false
-        titleLabel.text = "Event yo"
         titleLabel.font = UIFont.boldSystemFontOfSize(12)
         titleLabel.textColor = .whiteColor()
+        titleLabel.numberOfLines = 2
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(mapView)
