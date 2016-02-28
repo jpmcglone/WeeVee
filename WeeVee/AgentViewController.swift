@@ -6,6 +6,7 @@ import SnapKit
 import SDWebImage
 
 class AgentViewController: UITableViewController, OptionsViewDelegate {
+    let time: NSTimeInterval = 1
     let manager = Alamofire.Manager()
     let baseURLString = "http://weevee.herokuapp.com/api"
     
@@ -27,7 +28,7 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
         
         backgroundView = UIView(frame: view.bounds)
         tableView.backgroundView = backgroundView
-        tableView.contentInset = UIEdgeInsetsMake(-20, 0, 20, 0)
+        tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0)
         
         imageView = UIImageView(frame: backgroundView.bounds)
         imageView.image = UIImage(named: "background")
@@ -70,9 +71,7 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
     }
     
     func reloadData() {
-        let contentOffset = tableView.contentOffset
         tableView.reloadData()
-        tableView.contentOffset = contentOffset
     }
     
     func addMessage(message: Message, atIndex index: Int) {
@@ -87,11 +86,13 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
     func fetch(basketJSON: AnyObject?) {
         addMessage(typingMessage(), atIndex: messages.count)
 
-        NSTimer.tk_scheduledTimer(1) {
+        NSTimer.tk_scheduledTimer(time) {
             if let basket = Mapper<Basket>().map(basketJSON) {
                 if let basketMessages = basket.messages {
                     self.loadMessages(basketMessages) {
-                    self.setOptions(basket.options!)
+                        NSTimer.tk_scheduledTimer(self.time) {
+                            self.setOptions(basket.options!)
+                        }
                     }
                 }
             }
@@ -109,7 +110,7 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
             self.messages.removeAtIndex(index)
             completion()
         } else {
-            NSTimer.tk_scheduledTimer(1) {
+            NSTimer.tk_scheduledTimer(time) {
                 self.loadMessages(messages, completion: completion)
             }
         }
@@ -186,7 +187,9 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
         let message = messages[indexPath.row]
         
         if message.type == .Profile {
-            print("profile")
+            let profileViewController = ProfileViewController()
+            self.navigationController?.pushViewController(profileViewController, animated: true)
+            profileViewController.message = message
         }
     }
     
