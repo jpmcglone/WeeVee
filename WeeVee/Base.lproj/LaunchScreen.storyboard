@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -10,18 +11,43 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                        <viewControllerLayoutGuide type="top" id="fqQ-ZV-7og"/>
+                        <viewControllerLayoutGuide type="bottom" id="xOv-nE-ygp"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <view key="view" contentMode="scaleToFill" id="j7M-Fm-W8y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="leS-aF-A2W">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="qV2-Y5-c78">
+                                <rect key="frame" x="107" y="268" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="NBa-4j-KxU"/>
+                                    <constraint firstAttribute="width" constant="200" id="RgV-oX-qRd"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="leS-aF-A2W" firstAttribute="leading" secondItem="j7M-Fm-W8y" secondAttribute="leadingMargin" constant="-20" id="3I0-vZ-qdX"/>
+                            <constraint firstItem="qV2-Y5-c78" firstAttribute="centerX" secondItem="j7M-Fm-W8y" secondAttribute="centerX" id="GiF-5F-VsL"/>
+                            <constraint firstItem="leS-aF-A2W" firstAttribute="top" secondItem="fqQ-ZV-7og" secondAttribute="bottom" constant="-20" id="Nha-e8-GAS"/>
+                            <constraint firstItem="qV2-Y5-c78" firstAttribute="centerY" secondItem="j7M-Fm-W8y" secondAttribute="centerY" id="a11-IU-ILm"/>
+                            <constraint firstItem="xOv-nE-ygp" firstAttribute="top" secondItem="leS-aF-A2W" secondAttribute="bottom" id="kco-62-dBT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="leS-aF-A2W" secondAttribute="trailing" constant="-20" id="sR4-M5-zB9"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="168" height="300"/>
+        <image name="launch" width="257" height="214"/>
+    </resources>
 </document>

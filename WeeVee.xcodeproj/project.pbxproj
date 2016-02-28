@@ -12,11 +12,12 @@
 		403271221C82602F001B6AF0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403271211C82602F001B6AF0 /* Profile.swift */; };
 		403271241C826789001B6AF0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403271231C826789001B6AF0 /* ProfileViewController.swift */; };
 		40330AED1C813BDB00DA80DF /* sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 40330AEC1C813BDB00DA80DF /* sample.json */; };
-		40330AF21C8151DA00DA80DF /* TypingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40330AF11C8151DA00DA80DF /* TypingTableViewCell.swift */; };
-		40330AF61C81615900DA80DF /* BubbleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40330AF51C81615900DA80DF /* BubbleTableViewCell.swift */; };
 		40330AFB1C81677900DA80DF /* OptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40330AFA1C81677900DA80DF /* OptionCollectionViewCell.swift */; };
 		40330AFD1C81681D00DA80DF /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40330AFC1C81681D00DA80DF /* OptionsView.swift */; };
-		4090447B1C8288BA00CD5483 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4090447A1C8288BA00CD5483 /* EventTableViewCell.swift */; };
+		408B5E051C83A9B80058C9E0 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408B5E041C83A9B80058C9E0 /* MessageTableViewCell.swift */; };
+		408B5E0A1C83AA070058C9E0 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408B5E071C83AA070058C9E0 /* EventTableViewCell.swift */; };
+		408B5E0B1C83AA070058C9E0 /* TypingTableViewCell 14-17-35-603.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408B5E081C83AA070058C9E0 /* TypingTableViewCell 14-17-35-603.swift */; };
+		408B5E0D1C83AA310058C9E0 /* BubbleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408B5E0C1C83AA310058C9E0 /* BubbleTableViewCell.swift */; };
 		4090447D1C828A8600CD5483 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4090447C1C828A8600CD5483 /* MapKit.framework */; };
 		4090447F1C828D6400CD5483 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4090447E1C828D6400CD5483 /* Location.swift */; };
 		40C2E7EC1C8115D500FBCDBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7EB1C8115D500FBCDBE /* AppDelegate.swift */; };
@@ -24,7 +25,6 @@
 		40C2E7F31C8115D500FBCDBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40C2E7F21C8115D500FBCDBE /* Assets.xcassets */; };
 		40C2E7F61C8115D500FBCDBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C2E7F41C8115D500FBCDBE /* LaunchScreen.storyboard */; };
 		40C2E7FE1C8115FD00FBCDBE /* AgentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7FD1C8115FD00FBCDBE /* AgentViewController.swift */; };
-		40C2E8001C81179400FBCDBE /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7FF1C81179400FBCDBE /* MessageTableViewCell.swift */; };
 		40C2E8021C812B1300FBCDBE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E8011C812B1300FBCDBE /* Message.swift */; };
 		40C2E8041C812F7200FBCDBE /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E8031C812F7200FBCDBE /* Basket.swift */; };
 		40C2E8061C812F9400FBCDBE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E8051C812F9400FBCDBE /* Option.swift */; };
@@ -38,11 +38,12 @@
 		403271211C82602F001B6AF0 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		403271231C826789001B6AF0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ../ProfileViewController.swift; sourceTree = "<group>"; };
 		40330AEC1C813BDB00DA80DF /* sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample.json; sourceTree = "<group>"; };
-		40330AF11C8151DA00DA80DF /* TypingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingTableViewCell.swift; sourceTree = "<group>"; };
-		40330AF51C81615900DA80DF /* BubbleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTableViewCell.swift; sourceTree = "<group>"; };
 		40330AFA1C81677900DA80DF /* OptionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		40330AFC1C81681D00DA80DF /* OptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
-		4090447A1C8288BA00CD5483 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		408B5E041C83A9B80058C9E0 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		408B5E071C83AA070058C9E0 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		408B5E081C83AA070058C9E0 /* TypingTableViewCell 14-17-35-603.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TypingTableViewCell 14-17-35-603.swift"; sourceTree = "<group>"; };
+		408B5E0C1C83AA310058C9E0 /* BubbleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTableViewCell.swift; sourceTree = "<group>"; };
 		4090447C1C828A8600CD5483 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4090447E1C828D6400CD5483 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		40C2E7E81C8115D500FBCDBE /* WeeVee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeeVee.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,7 +53,6 @@
 		40C2E7F51C8115D500FBCDBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40C2E7F71C8115D500FBCDBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40C2E7FD1C8115FD00FBCDBE /* AgentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentViewController.swift; sourceTree = "<group>"; };
-		40C2E7FF1C81179400FBCDBE /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		40C2E8011C812B1300FBCDBE /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		40C2E8031C812F7200FBCDBE /* Basket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
 		40C2E8051C812F9400FBCDBE /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
@@ -96,17 +96,6 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		40330AEE1C8150CC00DA80DF /* TableViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				40330AF51C81615900DA80DF /* BubbleTableViewCell.swift */,
-				40C2E7FF1C81179400FBCDBE /* MessageTableViewCell.swift */,
-				40330AF11C8151DA00DA80DF /* TypingTableViewCell.swift */,
-				4090447A1C8288BA00CD5483 /* EventTableViewCell.swift */,
-			);
-			name = TableViewCells;
-			sourceTree = "<group>";
-		};
 		40330AF71C81650000DA80DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,9 +136,12 @@
 		40C2E7EA1C8115D500FBCDBE /* WeeVee */ = {
 			isa = PBXGroup;
 			children = (
+				408B5E0C1C83AA310058C9E0 /* BubbleTableViewCell.swift */,
+				408B5E071C83AA070058C9E0 /* EventTableViewCell.swift */,
+				408B5E081C83AA070058C9E0 /* TypingTableViewCell 14-17-35-603.swift */,
+				408B5E041C83A9B80058C9E0 /* MessageTableViewCell.swift */,
 				409044801C82944000CD5483 /* Features */,
 				40330AF71C81650000DA80DF /* Views */,
-				40330AEE1C8150CC00DA80DF /* TableViewCells */,
 				40330AEB1C81330600DA80DF /* Models */,
 				40C2E7EB1C8115D500FBCDBE /* AppDelegate.swift */,
 				40C2E7F21C8115D500FBCDBE /* Assets.xcassets */,
@@ -204,6 +196,7 @@
 				TargetAttributes = {
 					40C2E7E71C8115D500FBCDBE = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 28HAX9NHD8;
 					};
 				};
 			};
@@ -295,18 +288,18 @@
 				403271201C825F3D001B6AF0 /* EventViewController.swift in Sources */,
 				40330AFB1C81677900DA80DF /* OptionCollectionViewCell.swift in Sources */,
 				4090447F1C828D6400CD5483 /* Location.swift in Sources */,
+				408B5E0A1C83AA070058C9E0 /* EventTableViewCell.swift in Sources */,
+				408B5E0B1C83AA070058C9E0 /* TypingTableViewCell 14-17-35-603.swift in Sources */,
 				40C2E7EE1C8115D500FBCDBE /* ViewController.swift in Sources */,
-				4090447B1C8288BA00CD5483 /* EventTableViewCell.swift in Sources */,
 				403271221C82602F001B6AF0 /* Profile.swift in Sources */,
 				403271241C826789001B6AF0 /* ProfileViewController.swift in Sources */,
-				40C2E8001C81179400FBCDBE /* MessageTableViewCell.swift in Sources */,
-				40330AF21C8151DA00DA80DF /* TypingTableViewCell.swift in Sources */,
-				40330AF61C81615900DA80DF /* BubbleTableViewCell.swift in Sources */,
 				40C2E8061C812F9400FBCDBE /* Option.swift in Sources */,
+				408B5E051C83A9B80058C9E0 /* MessageTableViewCell.swift in Sources */,
 				40C2E8021C812B1300FBCDBE /* Message.swift in Sources */,
 				40C2E8041C812F7200FBCDBE /* Basket.swift in Sources */,
 				40330AFD1C81681D00DA80DF /* OptionsView.swift in Sources */,
 				40C2E7FE1C8115FD00FBCDBE /* AgentViewController.swift in Sources */,
+				408B5E0D1C83AA310058C9E0 /* BubbleTableViewCell.swift in Sources */,
 				40C2E7EC1C8115D500FBCDBE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,10 +404,13 @@
 			baseConfigurationReference = 42CA77F19856E01E1D684271 /* Pods-WeeVee.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WeeVee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.trifl.WeeVee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -423,10 +419,13 @@
 			baseConfigurationReference = 703C213F7F51D83F61025019 /* Pods-WeeVee.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WeeVee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.trifl.WeeVee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

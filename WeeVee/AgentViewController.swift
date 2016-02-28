@@ -7,7 +7,7 @@ import SDWebImage
 import MapKit
 
 class AgentViewController: UITableViewController, OptionsViewDelegate {
-    let time: NSTimeInterval = 0.02
+    let time: NSTimeInterval = 1
     let manager = Alamofire.Manager()
     let baseURLString = "http://weevee.herokuapp.com/api"
     
@@ -53,6 +53,8 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
     }
     
     func fetch(uri uri: String) {
+        addMessage(typingMessage(), atIndex: messages.count)
+
         let url = "\(baseURLString)/\(uri)"
         
         manager.request(.GET, url, parameters: nil).responseJSON { response in
@@ -86,8 +88,6 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
     }
     
     func fetch(basketJSON: AnyObject?) {
-        addMessage(typingMessage(), atIndex: messages.count)
-
         NSTimer.tk_scheduledTimer(time) {
             if let basket = Mapper<Basket>().map(basketJSON) {
                 if let basketMessages = basket.messages {
@@ -231,8 +231,9 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
             self.navigationController?.pushViewController(profileViewController, animated: true)
             profileViewController.message = message
         } else if message.type == .Event {
-            let eventViewController = EventViewController()
-            self.navigationController?.pushViewController(eventViewController, animated: true)
+            // TODO: make events work
+            //let eventViewController = EventViewController()
+            //self.navigationController?.pushViewController(eventViewController, animated: true)
         }
     }
     
