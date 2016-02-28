@@ -16,6 +16,9 @@
 		40330AF61C81615900DA80DF /* BubbleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40330AF51C81615900DA80DF /* BubbleTableViewCell.swift */; };
 		40330AFB1C81677900DA80DF /* OptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40330AFA1C81677900DA80DF /* OptionCollectionViewCell.swift */; };
 		40330AFD1C81681D00DA80DF /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40330AFC1C81681D00DA80DF /* OptionsView.swift */; };
+		4090447B1C8288BA00CD5483 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4090447A1C8288BA00CD5483 /* EventTableViewCell.swift */; };
+		4090447D1C828A8600CD5483 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4090447C1C828A8600CD5483 /* MapKit.framework */; };
+		4090447F1C828D6400CD5483 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4090447E1C828D6400CD5483 /* Location.swift */; };
 		40C2E7EC1C8115D500FBCDBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7EB1C8115D500FBCDBE /* AppDelegate.swift */; };
 		40C2E7EE1C8115D500FBCDBE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2E7ED1C8115D500FBCDBE /* ViewController.swift */; };
 		40C2E7F31C8115D500FBCDBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40C2E7F21C8115D500FBCDBE /* Assets.xcassets */; };
@@ -39,6 +42,9 @@
 		40330AF51C81615900DA80DF /* BubbleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTableViewCell.swift; sourceTree = "<group>"; };
 		40330AFA1C81677900DA80DF /* OptionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		40330AFC1C81681D00DA80DF /* OptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
+		4090447A1C8288BA00CD5483 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		4090447C1C828A8600CD5483 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4090447E1C828D6400CD5483 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		40C2E7E81C8115D500FBCDBE /* WeeVee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeeVee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C2E7EB1C8115D500FBCDBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40C2E7ED1C8115D500FBCDBE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4090447D1C828A8600CD5483 /* MapKit.framework in Frameworks */,
 				542EFAC783ED2F7269ED910B /* Pods_WeeVee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,6 +76,7 @@
 		1EB850C1A6203109419BB9A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4090447C1C828A8600CD5483 /* MapKit.framework */,
 				3A0AB9943A19D6178B90905E /* Pods_WeeVee.framework */,
 			);
 			name = Frameworks;
@@ -83,6 +91,7 @@
 				40330AEC1C813BDB00DA80DF /* sample.json */,
 				4032711B1C8179A9001B6AF0 /* sample2.json */,
 				403271211C82602F001B6AF0 /* Profile.swift */,
+				4090447E1C828D6400CD5483 /* Location.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -93,6 +102,7 @@
 				40330AF51C81615900DA80DF /* BubbleTableViewCell.swift */,
 				40C2E7FF1C81179400FBCDBE /* MessageTableViewCell.swift */,
 				40330AF11C8151DA00DA80DF /* TypingTableViewCell.swift */,
+				4090447A1C8288BA00CD5483 /* EventTableViewCell.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -276,7 +286,9 @@
 			files = (
 				403271201C825F3D001B6AF0 /* DeepDiveViewController.swift in Sources */,
 				40330AFB1C81677900DA80DF /* OptionCollectionViewCell.swift in Sources */,
+				4090447F1C828D6400CD5483 /* Location.swift in Sources */,
 				40C2E7EE1C8115D500FBCDBE /* ViewController.swift in Sources */,
+				4090447B1C8288BA00CD5483 /* EventTableViewCell.swift in Sources */,
 				403271221C82602F001B6AF0 /* Profile.swift in Sources */,
 				403271241C826789001B6AF0 /* ProfileViewController.swift in Sources */,
 				40C2E8001C81179400FBCDBE /* MessageTableViewCell.swift in Sources */,

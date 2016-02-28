@@ -4,9 +4,10 @@ import ObjectMapper
 import TK
 import SnapKit
 import SDWebImage
+import MapKit
 
 class AgentViewController: UITableViewController, OptionsViewDelegate {
-    let time: NSTimeInterval = 1
+    let time: NSTimeInterval = 0.02
     let manager = Alamofire.Manager()
     let baseURLString = "http://weevee.herokuapp.com/api"
     
@@ -44,6 +45,7 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
         tableView.registerClass(MessageTableViewCell.self, forCellReuseIdentifier: "card")
         tableView.registerClass(MessageTableViewCell.self, forCellReuseIdentifier: "message")
         tableView.registerClass(TypingTableViewCell.self, forCellReuseIdentifier: "typing")
+        tableView.registerClass(EventTableViewCell.self, forCellReuseIdentifier: "event")
 
         
         // load sample json
@@ -126,6 +128,15 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
             cell.setNeedsLayout()
             cell.setNeedsUpdateConstraints()
             return cell
+        } else if message.type == .Event {
+            let cell = tableView.dequeueReusableCellWithIdentifier("event", forIndexPath: indexPath) as! EventTableViewCell
+            cell.coordinate = CLLocationCoordinate2DMake(37.8075664, -122.4310133)
+
+            cell.titleLabel.text = message.text
+            
+//            cell.coordinate = CLLocationCoordinate2DMake(message.location?.latitude ?? 0, message.location?.longitude ?? 0)
+
+            return cell
         } else {
             let hasImage = message.profileURL != nil
             
@@ -135,7 +146,7 @@ class AgentViewController: UITableViewController, OptionsViewDelegate {
             if let type = message.type where type != .Other{
                 switch type {
                 case .Profile:
-                    cell.messageLabel.font = UIFont.boldSystemFontOfSize(10)
+                    cell.messageLabel.font = UIFont.boldSystemFontOfSize(12)
                 default:
                     cell.messageLabel.font = UIFont.systemFontOfSize(18)
                 }

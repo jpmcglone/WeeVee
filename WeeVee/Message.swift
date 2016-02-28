@@ -13,6 +13,7 @@ class Message: Mappable {
     var avatarURL: NSURL?
     
     var profileURL: NSURL?
+    var location: Location?
     
     init() {
         
@@ -26,8 +27,12 @@ class Message: Mappable {
         id <- map["id"]
         type <- (map["type"], MessageTypeTransform())
         text <- map["text"]
+        if text == nil {
+            text <- map["Text"]
+        }
         avatarURL <- (map["avatar_url"], URLTransform())
         profileURL <- (map["profile_url"], URLTransform())
+        location <- map["location"]
     }
 }
 

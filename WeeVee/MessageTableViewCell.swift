@@ -27,7 +27,7 @@ class MessageTableViewCell: BubbleTableViewCell {
             if hasImage {
                 make.top.left.equalTo(bubble).offset(innerMargin)
                 make.right.lessThanOrEqualTo(bubble).offset(-innerMargin)
-                make.bottom.equalTo(profileImageView.snp_top)
+                make.bottom.equalTo(profileImageView.snp_top).offset(-10)
             } else {
                 make.edges.equalTo(bubble).inset(innerMargin)
             }
